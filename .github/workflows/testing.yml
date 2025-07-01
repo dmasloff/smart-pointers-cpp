@@ -1,0 +1,21 @@
+name: smart-pointers-cpp-testing
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: env setup
+        run: sudo apt install -y valgrind
+      - name: build and test
+        run: make test
+      - name: clean
+        run: make clean
+
